@@ -2,17 +2,23 @@
 
 import Head from 'next/head'
 import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
+import utilStyles from '../../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'Your Name'
+// name変数に代入
+const name = 'Satsuki'
+// siteTitleにサイト名を代入
 export const siteTitle = 'Next.js Sample Website'
 
+// ここのchildrenとhomeはどこから？
 export default function Layout({ children, home }) {
   return (
+    // layoutの中を作成している。classNameにstyles.containerを代入、記法はJSX、内部でJavascriptを使うときは{}
+    // →layout.module.cssをきかせる。
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        {/* metaタグはなんだろう？？ */}
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"
@@ -31,6 +37,7 @@ export default function Layout({ children, home }) {
           <>
             <img
               src="/images/profile.jpg"
+              // 複数使うので文字列リテラルで囲む
               className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
               alt={name}
             />
@@ -42,11 +49,14 @@ export default function Layout({ children, home }) {
               <a>
                 <img
                   src="/images/profile.jpg"
+                  // 写真にstyleをきかせている、二つある。文字列リテラルを使っている。
                   className={`${styles.headerImage} ${utilStyles.borderCircle}`}
                   alt={name}
                 />
               </a>
             </Link>
+            {/* classNameに、適用されるcssを記載して印をつける。
+            その名前と同じ箇所の */}
             <h2 className={utilStyles.headingLg}>
               <Link href="/">
                 <a className={utilStyles.colorInherit}>{name}</a>
